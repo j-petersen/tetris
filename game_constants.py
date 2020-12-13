@@ -1,0 +1,23 @@
+WIN_WIDTH = 650
+WIN_HEIGHT = 800
+
+BLOCKSIZE = 50
+
+FALL_VEL = 30
+
+START_X = 5
+START_Y = 0
+
+## Colors
+# Game
+BG_COLOUR = (36, 42, 53)
+LINIE_COLOUR = (60, 66, 77)
+
+# Tetriminos
+I_COLOUR = (136, 240, 240)
+O_COLOUR = (240, 239, 56)
+T_COLOUR = (136, 1, 235)
+S_COLOUR = (135, 240, 56)
+Z_COLOUR = (205, 1, 0)
+J_COLOUR = (0, 0, 235)
+L_COLOUR = (220, 158, 37)
