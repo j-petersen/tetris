@@ -32,6 +32,7 @@ def game_loop(win):
 
     tile = random.choice(tiles)
     spawn_new_tile = False
+
     run = True
     while run:
         clock.tick(30)
@@ -49,6 +50,7 @@ def game_loop(win):
                     pygame.quit()
                     quit()
 
+                static_array = game.get_static_game_array()
                 if event.key == pygame.K_SPACE:
                     tile.rotate(static_array)
 
@@ -60,17 +62,15 @@ def game_loop(win):
 
         update = tile.move_y(static_array)
         if update is not None:
-            game.update_static_game_array(update)
+            run = game.update_static_game_array(update)
             spawn_new_tile = True
-            game.print_static_game_array()
-        # tile.print()
-        # game.print_static_game_array()
 
-        draw_ingame_window(win, bg_img, tile)
+        draw_ingame_window(win, bg_img, game, tile)
 
 
-def draw_ingame_window(win, bg_img, tile):
+def draw_ingame_window(win, bg_img, game, tile):
     win.blit(bg_img, (0, 0))
+    game.draw_static(win)
     tile.draw(win)
     pygame.display.update()
 

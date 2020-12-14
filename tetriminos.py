@@ -15,7 +15,6 @@ class Tetrimino(object):
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.rotation = 0
         self.tetrimino_array = np.zeros((self.LENGTH, self.LENGTH))
         self.tick_count = 0
 
@@ -94,10 +93,10 @@ class Tetrimino(object):
     def draw(self, win):
         for i in range(self.LENGTH):
             for j in range(self.LENGTH):
-                width = (self.x + j) * gc.BLOCKSIZE + 1
-                height = (self.y + i) * gc.BLOCKSIZE + 1
+                width = (self.x + j) * gc.BLOCKSIZE
+                height = (self.y + i) * gc.BLOCKSIZE
                 if self.tetrimino_array[i, j]:
-                    loc = (width, height, gc.BLOCKSIZE - 2, gc.BLOCKSIZE - 2)
+                    loc = (width, height, gc.BLOCKSIZE , gc.BLOCKSIZE )
                     pygame.draw.rect(win, self.COLOUR, loc)
 
     def print(self):
@@ -116,12 +115,12 @@ class I_Tetrimino(Tetrimino):
 
 class O_Tetrimino(Tetrimino):
     COLOUR = gc.O_COLOUR
-    LENGTH = 4
+    LENGTH = 2
     TYPE = 2
 
     def __init__(self, x, y):
         super().__init__(x, y)
-        self.tetrimino_array[1:3, 1:3] = 1
+        self.tetrimino_array[:, :] = 1
 
 
 class T_Tetrimino(Tetrimino):
